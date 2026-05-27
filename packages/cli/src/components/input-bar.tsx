@@ -16,7 +16,6 @@ export const TEXTAREA_KEY_BINDINGS: KeyBinding[] = [
   { name: "return", action: "submit" },
   { name: "enter", action: "submit" },
   { name: "ctrl + j", shift: true, action: "newline" },
-  { name: "ctrl + j", shift: true, action: "newline" },
 ];
 
 export function InputBar({ onSubmit, disabled }: Props) {
@@ -34,10 +33,10 @@ export function InputBar({ onSubmit, disabled }: Props) {
     setSelectedIndex,
   } = useCommandMenu();
 
-  const handleCommandExecute = useCallback((index: number) => {
+  const handleCommandExecute = (index: number) => {
     const command = resolveCommand(index);
     handleCommand(command);
-  }, []);
+  };
 
   const handleTextareaContentChange = useCallback(() => {
     const textarea = textareaRef.current;
