@@ -2,6 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -63,6 +64,12 @@ export function ToastProvider({ children }: ToastProviderProps) {
     },
     [clearCurrentTimeout],
   );
+
+  useEffect(() => {
+    return () => {
+      clearCurrentTimeout();
+    };
+  }, [clearCurrentTimeout]);
 
   const value: ToastContextValue = {
     show,
