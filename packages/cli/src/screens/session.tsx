@@ -89,7 +89,7 @@ export function Session() {
 
   return (
     <SessionShell onSubmit={() => {}} inputDisabled>
-      {session.messages.map((msg, index) => (
+      {(session.messages ?? []).map((msg, index) => (
         <ChatMessage key={index} msg={msg} />
       ))}
     </SessionShell>
