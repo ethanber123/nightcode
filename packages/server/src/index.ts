@@ -58,9 +58,11 @@ app.onError((error, c) => {
 app.get("/", (c) => c.text("SERVER WORKING"));
 app.route("/sessions", sessions).route("/chat", chat);
 
+const port = process.env.PORT || 3000;
+
 Bun.serve({
-  port: 3000,
+  port,
   fetch: app.fetch,
 });
 
-console.log("Server running on http://localhost:3000");
+console.log(`Server running on port ${port}`);
